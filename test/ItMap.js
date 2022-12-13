@@ -15,9 +15,9 @@ describe('Test ItMap library', async function () {
         itMap = await ItMap.deploy();
     })
     
-    describe('Tests before', async function () {
+    describe('Deploy', async function () {
         it('Array length', async function () {
-            const length = await itMap.getLength();
+            const length = await itMap.getCount();
             expect(length).to.equal(0);
         });
     });
@@ -35,13 +35,13 @@ describe('Test ItMap library', async function () {
             it('should insert first address', async function () {
                 await itMap.insert(add1);
 
-                const isIncluded = await itMap.isIncluded(add1);
-                expect(isIncluded).to.equal(true);
+                const isInserted = await itMap.isInserted(add1);
+                expect(isInserted).to.equal(true);
 
                 const index = await itMap.getMap(add1);
                 expect(index).to.equal(1);
 
-                const length = await itMap.getLength();
+                const length = await itMap.getCount();
                 expect(length).to.equal(1);
 
                 const item = await itMap.getArray(0);
@@ -52,13 +52,13 @@ describe('Test ItMap library', async function () {
                 await itMap.insert(add1);
                 await itMap.insert(add2);
 
-                const isIncluded = await itMap.isIncluded(add2);
-                expect(isIncluded).to.equal(true);
+                const isInserted = await itMap.isInserted(add2);
+                expect(isInserted).to.equal(true);
 
                 const index = await itMap.getMap(add2);
                 expect(index).to.equal(2);
 
-                const length = await itMap.getLength();
+                const length = await itMap.getCount();
                 expect(length).to.equal(2);
 
                 const item = await itMap.getArray(1);
@@ -82,13 +82,13 @@ describe('Test ItMap library', async function () {
             it('should remove first item', async function () {
                 await itMap.remove(add1);
 
-                const isIncluded = await itMap.isIncluded(add1);
-                expect(isIncluded).to.equal(false);
+                const isInserted = await itMap.isInserted(add1);
+                expect(isInserted).to.equal(false);
 
                 const index = await itMap.getMap(add1);
                 expect(index).to.equal(0);
 
-                const length = await itMap.getLength();
+                const length = await itMap.getCount();
                 expect(length).to.equal(2);
 
                 const item = await itMap.getArray(0);
@@ -104,13 +104,13 @@ describe('Test ItMap library', async function () {
             it('should remove item in the middle', async function () {
                 await itMap.remove(add2);
 
-                const isIncluded = await itMap.isIncluded(add2);
-                expect(isIncluded).to.equal(false);
+                const isInserted = await itMap.isInserted(add2);
+                expect(isInserted).to.equal(false);
 
                 const index = await itMap.getMap(add2);
                 expect(index).to.equal(0);
 
-                const length = await itMap.getLength();
+                const length = await itMap.getCount();
                 expect(length).to.equal(2);
 
                 const item = await itMap.getArray(1);
@@ -126,13 +126,13 @@ describe('Test ItMap library', async function () {
             it('should remove last item', async function () {
                 await itMap.remove(add3);
 
-                const isIncluded = await itMap.isIncluded(add3);
-                expect(isIncluded).to.equal(false);
+                const isInserted = await itMap.isInserted(add3);
+                expect(isInserted).to.equal(false);
 
                 const index = await itMap.getMap(add3);
                 expect(index).to.equal(0);
 
-                const length = await itMap.getLength();
+                const length = await itMap.getCount();
                 expect(length).to.equal(2);
 
                 const tx = itMap.getArray(2);
@@ -146,7 +146,7 @@ describe('Test ItMap library', async function () {
                 await itMap.remove(add2);
                 await itMap.remove(add3);
 
-                const length = await itMap.getLength();
+                const length = await itMap.getCount();
                 expect(length).to.equal(0);
             });
 

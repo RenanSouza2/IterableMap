@@ -20,9 +20,9 @@ contract LibItMapDemo {
         itMap.removeAddress(_address);
     }
     
-    function isIncluded(address _address)
+    function isInserted(address _address)
     external view returns (bool) {
-        return itMap.isIncluded(_address);
+        return itMap.isInserted(_address);
     }
 
     function getCount()

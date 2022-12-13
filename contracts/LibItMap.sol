@@ -42,7 +42,7 @@ library LibItMap {
         itMap.array[index - 1] = newAddress;
     }
 
-    function isIncluded(ItMap storage itMap, address _address)
+    function isInserted(ItMap storage itMap, address _address)
     internal view returns(bool) {
         return itMap.map[_address] != 0;
     }
